@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommercedeliveryapp/app/view/home/widgets/promocard.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/image_path.dart';
@@ -25,19 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 80,
+          leading: IconButton(
+              onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
+          automaticallyImplyLeading: false,
           title: const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text("Delivo"),
           ),
-          
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    Icons.notifications_none,
+                    Icons.favorite_border_outlined,
                     color: AppColors.kBlackColor,
                   )),
             ),
@@ -63,25 +64,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 const MySearchBar(),
                 const SizedBox(height: 20),
                 PromoCard(),
-                
                 const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      child: const Text("What's your moood today?"),
+                      onPressed: () {},
+                    ),
+                    TextButton(
+                      child: const Text("View all"),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: 230,
                   child: ListView.separated(
-                    padding: const EdgeInsets.only(left: 30),
+                    padding: const EdgeInsets.only(left: 10),
                     separatorBuilder: (context, index) =>
                         const SizedBox(width: 20),
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     itemCount: foodList.length,
                     itemBuilder: (context, index) {
-                      return ItemsCard(foodModel: foodList[index], onTap: () {});
+                      return ItemsCard(
+                          foodModel: foodList[index], onTap: () {});
                     },
                   ),
                 ),
               ],
             ),
           ),
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.white,
+          color: Color.fromARGB(197, 33, 222, 39),
+          animationDuration: Duration(milliseconds: 300),
+          items: [
+            Icon(Icons.home),
+            Icon(Icons.favorite),
+            Icon(Icons.card_travel),
+          ],
         ),
       ),
     );
@@ -156,7 +180,7 @@ class _ItemsCardState extends State<ItemsCard> {
                           const Text(
                             "Rs",
                             style: TextStyle(
-                                fontSize: 12, color: AppColors.kPrimaryColor),
+                                fontSize: 12, color: AppColors.kBlackColor),
                           ),
                           const SizedBox(width: 3),
                           Text(
@@ -229,7 +253,7 @@ class MySearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: TextField(
         style: const TextStyle(fontSize: 12, color: AppColors.kWhiteColor),
         decoration: InputDecoration(
@@ -367,7 +391,7 @@ List foodList = [
     title: "Bowl of Porridge with Fruits",
     description:
         "Bowl of Porridge with Fruits is a hearty “main dish” kind of salad with bold flavors. Chicken breasts are marinated in cilantro lime goodness, then seared until golden and added to a bed of romaine lettuce along with sweet corn, black beans, and grape tomatoes. A generous drizzle of creamy avocado dressing ties it all together. Chicken breasts are marinated in cilantro lime goodness, then seared until golden and added to a bed of romaine lettuce along with sweet corn, black beans, and grape tomatoes. A generous drizzle of creamy avocado dressing ties it all together.",
-    image:AssetImagepath.kimage1,
+    image: AssetImagepath.kimage1,
     detailImage: AppAssets.kDetailFood1,
     price: "9.67",
     rating: "4.5",
@@ -411,7 +435,7 @@ List foodList = [
     title: "Egg Delight with Vegetables",
     description:
         "Egg Delight with Vegetables is a hearty “main dish” kind of salad with bold flavors. Chicken breasts are marinated in cilantro lime goodness, then seared until golden and added to a bed of romaine lettuce along with sweet corn, black beans, and grape tomatoes. A generous drizzle of creamy avocado dressing ties it all together.",
-    image:AssetImagepath.kimage5,
+    image: AssetImagepath.kimage5,
     detailImage: AppAssets.kDetailFood2,
     price: "8.00",
     rating: "4.7",

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/app_colors.dart';
 
 class AuthField extends StatefulWidget {
-  final String title;
   final String hintText;
   final Color? titleColor;
   final TextEditingController controller;
@@ -12,7 +11,6 @@ class AuthField extends StatefulWidget {
   final String? Function(String?)? validator;
   final int? maxLines;
   const AuthField({
-    required this.title,
     required this.hintText,
     required this.controller,
     this.validator,
@@ -35,12 +33,6 @@ class _AuthFieldState extends State<AuthField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.title,
-          style: TextStyle(
-              fontSize: 14,
-              color: widget.titleColor ?? const Color(0xFF78828A)),
-        ),
         const SizedBox(height: 5),
         TextFormField(
           controller: widget.controller,
@@ -54,7 +46,7 @@ class _AuthFieldState extends State<AuthField> {
             fillColor: const Color(0xFFF6F6F6),
             filled: true,
             hintText: widget.hintText,
-            hintStyle: const TextStyle(color: AppColors.kGrey60),
+            hintStyle: const TextStyle(color: Colorspage.kGrey60),
             suffixIcon: widget.isPassword
                 ? IconButton(
                     onPressed: () {

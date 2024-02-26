@@ -10,7 +10,7 @@ class TextWithDivider extends StatelessWidget {
       children: [
         Expanded(
           child: Divider(
-            color: AppColors.kGrey60,
+            color: Colorspage.kGrey60,
           ),
         ),
         SizedBox(width: 20),
@@ -19,12 +19,12 @@ class TextWithDivider extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppColors.kGrey60,
+            color: Colorspage.kGrey60,
           ),
         ),
         SizedBox(width: 20),
         Expanded(
-          child: Divider(color: AppColors.kGrey60),
+          child: Divider(color: Colorspage.kGrey60),
         ),
       ],
     );

@@ -26,13 +26,11 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kWhite,
+      backgroundColor: Colorspage.kWhite,
       appBar: AppBar(
-          backgroundColor: AppColors.kWhite,
-          elevation: 0,
-          leading: const BackButton(
-            color: AppColors.kPrimary,
-          )),
+        backgroundColor: Colorspage.kWhite,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20),
@@ -51,7 +49,6 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 30),
                 // Email Field.
                 AuthField(
-                  title: 'Email Address',
                   hintText: 'Enter your email address',
                   controller: _emailController,
                   validator: (value) {
@@ -66,7 +63,6 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 15),
                 // Password Field.
                 AuthField(
-                  title: 'Password',
                   hintText: 'Enter your password',
                   controller: _passwordController,
                   validator: (value) {
@@ -112,7 +108,7 @@ class _SignInState extends State<SignIn> {
                     style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.kGrey70),
+                        color: Colorspage.kGrey70),
                     children: [
                       TextSpan(
                         text: 'Sign Up',
@@ -126,7 +122,7 @@ class _SignInState extends State<SignIn> {
                         style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.kPrimary),
+                            color: Colorspage.kPrimary),
                       ),
                     ],
                   ),
@@ -141,14 +137,6 @@ class _SignInState extends State<SignIn> {
                     CustomSocialButton(
                       onTap: () {},
                       icon: AssetImagepath.kGoogle,
-                    ),
-                    CustomSocialButton(
-                      onTap: () {},
-                      icon: AssetImagepath.kApple,
-                    ),
-                    CustomSocialButton(
-                      onTap: () {},
-                      icon: AssetImagepath.kFacebook,
                     ),
                   ],
                 ),

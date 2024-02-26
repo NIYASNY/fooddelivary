@@ -15,7 +15,7 @@ class AgreeTermsTextCard extends StatelessWidget {
           style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: AppColors.kGrey70),
+              color: Colorspage.kGrey70),
           children: [
             TextSpan(
                 text: 'Terms',
@@ -23,20 +23,20 @@ class AgreeTermsTextCard extends StatelessWidget {
                 style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.kGrey100)),
+                    color: Colorspage.kGrey100)),
             const TextSpan(
                 text: ' and ',
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.kGrey70)),
+                    color: Colorspage.kGrey70)),
             TextSpan(
                 text: 'Conditions of Use',
                 recognizer: TapGestureRecognizer()..onTap = () {},
                 style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.kGrey100)),
+                    color: Colorspage.kGrey100)),
           ],
         ),
         textAlign: TextAlign.center,

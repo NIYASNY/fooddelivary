@@ -7,10 +7,10 @@ import 'package:flutter_ecommercedeliveryapp/app/view/auth/widgets/auth_filed.da
 import 'package:flutter_ecommercedeliveryapp/app/view/auth/widgets/primary_button.dart';
 import 'package:flutter_ecommercedeliveryapp/app/view/auth/widgets/socialbutton.dart';
 import 'package:flutter_ecommercedeliveryapp/app/view/auth/widgets/text_divider.dart';
+import 'package:flutter_ecommercedeliveryapp/app/view/home/home_screen.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/colors.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/app_colors.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/image_path.dart';
-
 import '../../controller/signup/bloc/signup_bloc.dart';
 
 class SignUp extends StatefulWidget {
@@ -31,18 +31,19 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kWhite,
+      backgroundColor: Colorspage.kWhite,
       appBar: AppBar(
-          backgroundColor: AppColors.kWhite,
+          backgroundColor: Colorspage.kWhite,
           elevation: 0,
           leading: const BackButton(
-            color: AppColors.kPrimary,
+            color: Colorspage.kPrimary,
           )),
       body: BlocConsumer<SignupBloc, SignupState>(
         bloc: signupBloc,
         listener: (context, state) {
           if (state is SignUpSuccessState) {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignIn()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
           } else if (state is SignUpErrorState) {
             showErrorSnackBar(context, state.error);
           }
@@ -65,16 +66,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 35),
                     // FullName.
                     AuthField(
-                      title: 'Full Name',
                       hintText: 'Enter your name',
                       controller: _nameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Name is required';
                         }
-                        //  else if (!RegExp(r'^[a-zA-Z ]+ $').hasMatch(value)) {
-                        //   return 'Please enter a valid name';
-                        // }
                         return null;
                       },
                       keyboardType: TextInputType.name,
@@ -83,7 +80,6 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 15),
                     // Email Field.
                     AuthField(
-                      title: 'E-mail',
                       hintText: 'Enter your email address',
                       controller: _emailController,
                       validator: (value) {
@@ -97,7 +93,6 @@ class _SignUpState extends State<SignUp> {
                     ),
                     const SizedBox(height: 15),
                     AuthField(
-                      title: 'Mobile',
                       hintText: 'Enter your Phone number',
                       controller: _numberController,
                       validator: (value) {
@@ -112,16 +107,12 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 15),
                     // Password Field.
                     AuthField(
-                      title: 'Password',
                       hintText: 'Enter your password',
                       controller: _passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Password is required';
                         }
-                        // else if (value.length < 8) {
-                        //   return 'Password should be at least 8 characters long';
-                        // }
                         return null;
                       },
                       isPassword: true,
@@ -139,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                             style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
-                                color: AppColors.kGrey70),
+                                color: Colorspage.kGrey70),
                             children: [
                               TextSpan(
                                 text: 'Sign In',
@@ -154,7 +145,7 @@ class _SignUpState extends State<SignUp> {
                                 style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
-                                    color: AppColors.kPrimary),
+                                    color: Colorspage.kPrimary),
                               ),
                             ],
                           ),
@@ -185,14 +176,6 @@ class _SignUpState extends State<SignUp> {
                         CustomSocialButton(
                           onTap: () {},
                           icon: AssetImagepath.kGoogle,
-                        ),
-                        CustomSocialButton(
-                          onTap: () {},
-                          icon: AssetImagepath.kApple,
-                        ),
-                        CustomSocialButton(
-                          onTap: () {},
-                          icon: AssetImagepath.kFacebook,
                         ),
                       ],
                     ),

@@ -79,7 +79,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
             child: Text(
               widget.text,
               style: TextStyle(
-                  color: widget.color == null ? AppColors.kWhite : Colors.black,
+                  color: widget.color == null ? Colorspage.kWhite : Colors.black,
                   fontSize: widget.fontSize ?? 16,
                   fontWeight: FontWeight.w600),
             ),

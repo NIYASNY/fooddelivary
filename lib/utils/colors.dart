@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 class AppColor {
+  static Color korange = const Color(0xFFEF8829);
   static Color kPrimary = const Color(0XFF1460F2);
   static Color kWhite = const Color(0XFFFFFFFF);
   static Color kOnBoardingColor = const Color(0XFFFEFEFE);
