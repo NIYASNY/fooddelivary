@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/colors.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/error_handling.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/signupurl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiServices {
   Dio dio = Dio();
@@ -49,6 +50,47 @@ class ApiServices {
       log(response.statusCode.toString());
       print(response.statusCode);
 
+      return response.statusCode == 200;
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  //...........Signin..........//
+
+  Future<bool> signInUser(String email, String password) async {
+    var data = {
+      "email": email,
+      "password": password,
+    };
+
+    try {
+      final response = await dio.post(
+        signInUrl,
+        data: jsonEncode(data),
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      print(response.statusCode);
+
+      log(response.data['accessTokenUser'.toString()]);
+
+      if (response.statusCode == 200) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString(
+            'userToken', response.data['accessTokenUser'.toString()]);
+      }
+
+      if (response.statusCode == 401) {
+        String error = 'Something went wrong';
+        if (response.data != null &&
+            response.data['error'] == 'Invalid username or password') {
+          error = 'Invalid username or password';
+        }
+        throw Exception(error);
+      }
       return response.statusCode == 200;
     } on DioException {
       rethrow;

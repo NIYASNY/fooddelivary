@@ -42,8 +42,10 @@ class _SignUpState extends State<SignUp> {
         bloc: signupBloc,
         listener: (context, state) {
           if (state is SignUpSuccessState) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            // Navigator.push(context,
+            //     MaterialPageRoute(builder: (context) => const HomeScreen()));
           } else if (state is SignUpErrorState) {
             showErrorSnackBar(context, state.error);
           }
