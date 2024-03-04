@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/colors.dart';
+import 'package:flutter_ecommercedeliveryapp/utils/constants/apiurl.dart';
 import 'package:flutter_ecommercedeliveryapp/utils/constants/error_handling.dart';
-import 'package:flutter_ecommercedeliveryapp/utils/constants/signupurl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiServices {

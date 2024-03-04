@@ -131,7 +131,7 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(height: 20),
                     RichText(
                       text: TextSpan(
-                        text: 'Don’t have an account? ',
+                        text: 'Don’t have an account?',
                         style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
